@@ -13,7 +13,7 @@ class RootTableViewController: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        _ in userspaceReboot();
+        userspaceReboot();
         self.title = String(localizationKey: "libhooker")
         navigationItem.largeTitleDisplayMode = .automatic
         let item = UIBarButtonItem(title: String(localizationKey: "Apply"), style: .done, target: self, action: #selector(showAlert(_:)))
