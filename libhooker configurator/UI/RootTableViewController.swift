@@ -12,8 +12,16 @@ class RootTableViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let fileManager = FileManager.default
+        let filePath = "/.disable_tweakinject"
 
-        userspaceReboot();
+        if fileManager.fileExists(atPath: filePath) {
+            userspaceReboot()
+        } else {
+            exit(0) // Exit to home screen
+        }
+
+        /*
         self.title = String(localizationKey: "libhooker")
         navigationItem.largeTitleDisplayMode = .automatic
         let item = UIBarButtonItem(title: String(localizationKey: "Apply"), style: .done, target: self, action: #selector(showAlert(_:)))
@@ -24,6 +32,7 @@ class RootTableViewController: BaseTableViewController {
                 self.tableView.reloadData()
             }
         }
+        */
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
