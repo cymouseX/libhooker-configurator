@@ -16,9 +16,15 @@ jobs:
           brew install ldid dpkg
       - name: Build libhooker-configurator
         run: |
-         make clean package BETA=1 DEBUG=0
+          make clean package BETA=1 DEBUG=0
+      - name: Upload Package as Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libhooker-configurator-deb
+          path: ./packages/*.deb
+          if-no-files-found: error
       - name: Upload To Repo
-        env: # 
+        env:
           token: ${{ secrets.AMY_REPO_SECRET }}
         run: |
           package=$(ls -t packages | head -n1)
