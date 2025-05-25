@@ -14,7 +14,6 @@ class RootTableViewController: BaseTableViewController {
         super.viewDidLoad()
         let fileManager = FileManager.default
         let filePath = "/.disable_tweakinject"
-
         if fileManager.fileExists(atPath: filePath) {
             userspaceReboot()
         } else {
