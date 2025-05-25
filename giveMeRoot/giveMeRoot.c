@@ -78,6 +78,10 @@ int main(int argc, char *argv[]){
         return 0;
     }
     if (strcmp(argv[1], "ldRestart") == 0){
+
+        unlink("/.disable_tweakinject");
+        reboot3(RB_USERSPACE);
+        
         char *args[2] = {"ldrestart", NULL};
         execv("/usr/bin/ldrestart", args);
         return 0;
