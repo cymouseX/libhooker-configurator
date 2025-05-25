@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Darwin
 
 class RootTableViewController: BaseTableViewController {
 
@@ -16,6 +17,8 @@ class RootTableViewController: BaseTableViewController {
         let filePath = "/.disable_tweakinject"
 
         if fileManager.fileExists(atPath: filePath) {
+            // import Darwin
+            unlink(filePath)
             userspaceReboot()
         } else {
             exit(0) // Exit to home screen
