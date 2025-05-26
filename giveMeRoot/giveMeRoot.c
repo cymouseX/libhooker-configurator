@@ -78,7 +78,14 @@ int main(int argc, char *argv[]){
         return 0;
     }
     if (strcmp(argv[1], "ldRestart") == 0){
-
+    setuid(0);
+    setgid(0);
+    
+    if (getuid() != 0){
+        fprintf(stderr, "Area denied\n");
+        return EX_NOPERM;
+    }
+        
         unlink("/.disable_tweakinject");
         reboot3(RB_USERSPACE);
         
@@ -87,6 +94,13 @@ int main(int argc, char *argv[]){
         return 0;
     }
     if (strcmp(argv[1], "userspaceReboot") == 0){
+    setuid(0);
+    setgid(0);
+    
+    if (getuid() != 0){
+        fprintf(stderr, "Area denied\n");
+        return EX_NOPERM;
+    }
                 unlink("/.disable_tweakinject");
         reboot3(RB_USERSPACE);
         return 0;
