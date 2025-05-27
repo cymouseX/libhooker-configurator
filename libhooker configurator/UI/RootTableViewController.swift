@@ -11,7 +11,6 @@ import UIKit
 class RootTableViewController: BaseTableViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
         let fileManager = FileManager.default
         let filePath = "/.disable_tweakinject"
         if fileManager.fileExists(atPath: filePath) {
@@ -19,6 +18,8 @@ class RootTableViewController: BaseTableViewController {
         } else {
             exit(0) // Exit to home screen
         }
+
+                super.viewDidLoad()
 
         /*
         self.title = String(localizationKey: "libhooker")
